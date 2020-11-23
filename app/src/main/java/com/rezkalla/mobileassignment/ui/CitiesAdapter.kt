@@ -15,6 +15,7 @@ class CitiesAdapter @Inject constructor() : RecyclerView.Adapter<CitiesAdapter.C
     fun updateCities(list: List<City>) {
         cities.clear()
         cities.addAll(list)
+        notifyDataSetChanged()
     }
 
 

@@ -14,7 +14,11 @@ class CitiesViewModel @Inject constructor(
 
     val citiesLiveData = MutableLiveData<List<City>>()
 
-    fun getCities() {
+    init {
+        getCities()
+    }
+
+    private fun getCities() {
         citiesLiveData.postValue(
             getCitiesUseCase().map {
                 mapper.from(it)
