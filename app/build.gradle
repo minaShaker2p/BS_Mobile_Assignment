@@ -40,6 +40,8 @@ dependencies {
 
     // VM and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.1'
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
 
     //dagger
