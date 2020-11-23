@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.rezkalla.mobileassignment.R
 import com.rezkalla.mobileassignment.model.City
 import kotlinx.android.synthetic.main.item_city.view.*
+import javax.inject.Inject
 
-class CitiesAdapter : RecyclerView.Adapter<CitiesAdapter.CityViewHolder>() {
+class CitiesAdapter @Inject constructor() : RecyclerView.Adapter<CitiesAdapter.CityViewHolder>() {
     private val cities = mutableListOf<City>()
 
     fun updateCities(list: List<City>) {
