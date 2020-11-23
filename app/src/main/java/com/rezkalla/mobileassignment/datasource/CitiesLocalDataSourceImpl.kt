@@ -9,7 +9,7 @@ import org.json.JSONObject
 import java.nio.charset.Charset
 
 
-class NewsLocalDataSourceImpl(private val application: Application) :
+class CitiesLocalDataSourceImpl(private val application: Application) :
     CitiesLocalDataSource {
     private var jsonString: String? = null
 
