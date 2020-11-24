@@ -22,8 +22,8 @@ class CitiesLocalDataSourceImpl(private val application: Application) :
             val name = newsObject.getString("name")
             val id = newsObject.getInt("_id")
             val coordinate = newsObject.getJSONObject("coord")
-            val latitude = coordinate.getDouble("lon")
-            val longitude = coordinate.getDouble("lat")
+            val latitude = coordinate.getDouble("lat")
+            val longitude = coordinate.getDouble("lon")
 
             citiesItems.add(
                 CityEntity(

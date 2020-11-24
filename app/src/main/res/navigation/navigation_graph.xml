@@ -7,7 +7,16 @@
 
     <fragment
         android:id="@+id/citiesFragment"
-        android:name="com.rezkalla.mobileassignment.ui.CitiesFragment"
+        android:name="com.rezkalla.mobileassignment.ui.CitiesListFragment"
         android:label="CitiesFragment"
-        tools:layout="@layout/fragment_cities" />
+        tools:layout="@layout/fragment_cities" >
+        <action
+            android:id="@+id/action_citiesFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.rezkalla.mobileassignment.ui.MapFragment"
+        tools:layout="@layout/fragment_map"
+        android:label="MapFragment" />
 </navigation>

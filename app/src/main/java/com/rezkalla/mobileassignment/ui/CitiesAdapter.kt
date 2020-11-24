@@ -18,6 +18,12 @@ class CitiesAdapter @Inject constructor() : RecyclerView.Adapter<CitiesAdapter.C
         notifyDataSetChanged()
     }
 
+    private var clickListener: OnCityClickListener? = null
+
+    fun setOnClickListener(listener: OnCityClickListener) {
+        this.clickListener = listener
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_city, parent, false)
@@ -28,6 +34,9 @@ class CitiesAdapter @Inject constructor() : RecyclerView.Adapter<CitiesAdapter.C
 
     override fun onBindViewHolder(holder: CityViewHolder, position: Int) {
         holder.bind(cities[position])
+        holder.itemView.setOnClickListener {
+            clickListener?.onCLick(cities[position])
+        }
     }
 
 
@@ -37,5 +46,8 @@ class CitiesAdapter @Inject constructor() : RecyclerView.Adapter<CitiesAdapter.C
             itemView.tvSubTitle.text = "${city.coordinate.latitude},${city.coordinate.longitude}"
         }
     }
+}
 
+interface OnCityClickListener {
+    fun onCLick(city: City)
 }

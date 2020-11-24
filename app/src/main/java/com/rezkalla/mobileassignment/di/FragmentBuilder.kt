@@ -1,6 +1,6 @@
 package com.rezkalla.mobileassignment.di
 
-import com.rezkalla.mobileassignment.ui.CitiesFragment
+import com.rezkalla.mobileassignment.ui.CitiesListFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,6 +8,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuilder {
 
     @ContributesAndroidInjector(modules = [RepositoryModule::class])
-    internal abstract fun provideListFragment(): CitiesFragment
+    internal abstract fun provideListFragment(): CitiesListFragment
 
 }

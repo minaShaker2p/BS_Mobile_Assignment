@@ -5,20 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.rezkalla.mobileassignment.R
+import com.rezkalla.mobileassignment.model.City
 import com.rezkalla.mobileassignment.presentation.CitiesViewModel
 import com.rezkalla.mobileassignment.utils.VerticalSpaceItemDecoration
 import com.rezkalla.mobileassignment.utils.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_cities.*
 import javax.inject.Inject
 
-class CitiesFragment : Fragment() {
+class CitiesListFragment : Fragment(), OnCityClickListener {
 
 
     @Inject
@@ -61,6 +65,13 @@ class CitiesFragment : Fragment() {
             addItemDecoration(VerticalSpaceItemDecoration(24))
             adapter = citiesAdapter
         }
+        citiesAdapter.setOnClickListener(this)
+    }
+
+    override fun onCLick(city: City) {
+        val bundle = bundleOf("city" to city)
+        navHostFragment.findNavController()
+            .navigate(R.id.action_citiesFragment_to_mapFragment, bundle)
     }
 
 }
