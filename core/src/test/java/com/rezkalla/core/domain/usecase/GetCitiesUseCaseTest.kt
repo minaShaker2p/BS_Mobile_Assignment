@@ -18,12 +18,12 @@ class GetCitiesUseCaseTest {
     @Mock
     private lateinit var repository: CitiesRepository
 
-    private lateinit var useCase: GetCitiesUseCase
+    private lateinit var useCase: FilterCitiesUseCase
 
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        useCase = GetCitiesUseCase(repository)
+        useCase = FilterCitiesUseCase(repository)
     }
 
 

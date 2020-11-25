@@ -17,6 +17,7 @@ import com.rezkalla.mobileassignment.model.City
 import com.rezkalla.mobileassignment.presentation.CitiesViewModel
 import com.rezkalla.mobileassignment.utils.VerticalSpaceItemDecoration
 import com.rezkalla.mobileassignment.utils.ViewModelFactory
+import com.rezkalla.mobileassignment.utils.afterTextChanged
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_cities.*
@@ -51,12 +52,19 @@ class CitiesListFragment : Fragment(), OnCityClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupFilterEditText()
         viewModel.citiesLiveData.observe(requireActivity(), Observer { cities ->
             cities?.let {
                 citiesAdapter.updateCities(it)
             }
-
         })
+        viewModel.getCities()
+    }
+
+    private fun setupFilterEditText() {
+        edtFilter.afterTextChanged {
+            viewModel.getCities(word = it)
+        }
     }
 
     private fun setupRecyclerView() {
